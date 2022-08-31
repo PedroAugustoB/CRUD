@@ -26,14 +26,27 @@ export class UsuarioController{
 
     static async alterarUsuario(req, res){
         try{
-            const {nome_User, email_User, senha_User, dt_nasc, nivel_User, status_User, data_insert, data_update} = req.body
-            const {id_User} = req.params
-            const alterar_Usuario = await new Usuario(nome_User, email_User, senha_User, dt_nasc, nivel_User, status_User, data_insert, data_update, id_User).Update();
+            const{id_User} = req.params
+            const{nome_User, email_User, senha_User, dt_nasc, nivel_User, status_User, data_insert, data_update} = req.body
+            const alterar_Usuario = await new Usuario (nome_User, email_User, senha_User, dt_nasc, nivel_User, status_User, data_insert, data_update, id_User).Update()
             return res.status(200).json(alterar_Usuario)
         }catch(err){
-            console.log("Erro no usuarioController|Alterar Usuario: " + err)
+            console.log("Erro no usuarioController| Alterar Usuario: " + err)
             return res.status(500).json(err)
         }
-    }
 
+        }
+
+        static async deleteUsuario(req, res){
+            try{
+                const { id_User } = req.params
+                const {nome_User, email_User, senha_User, status_User, dt_nasc, nivel_User,  data_insert, data_update} = req.body
+                const delete_Usuario = await new Usuario (nome_User, email_User, senha_User, status_User, dt_nasc, nivel_User, data_insert, data_update, id_User).Delete()
+                return res.status(200).json(delete_Usuario)
+            }catch(err){
+                console.log("Erro no usuarioController | Delete Usuario")
+
+            }
+        }
 }
+ 
