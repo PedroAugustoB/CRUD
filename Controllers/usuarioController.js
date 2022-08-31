@@ -1,5 +1,6 @@
 import { Usuario } from "../Models/usuarioModels.js";
 
+
 export class UsuarioController{
     
     static async listarTodos(req, res){
@@ -40,11 +41,11 @@ export class UsuarioController{
         static async deleteUsuario(req, res){
             try{
                 const { id_User } = req.params
-                const {nome_User, email_User, senha_User, status_User, dt_nasc, nivel_User,  data_insert, data_update} = req.body
-                const delete_Usuario = await new Usuario (nome_User, email_User, senha_User, status_User, dt_nasc, nivel_User, data_insert, data_update, id_User).Delete()
+                const delete_Usuario = await new Usuario ('nome_User', 'email_User', 'senha_User', 'status_User', 'dt_nasc', 'nivel_User', 'data_insert', 'data_update', id_User).Delete()
                 return res.status(200).json(delete_Usuario)
             }catch(err){
-                console.log("Erro no usuarioController | Delete Usuario")
+                console.log("Erro no usuarioController | Delete Usuario: " + err)
+                return res.status(500).json(err)
 
             }
         }

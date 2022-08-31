@@ -10,7 +10,7 @@ export async function CriacaoPoolSql(){
     }
 
     catch(err){
-        console.log("Erro de Criação da Conexão da Pool: ${err}")
+        console.log(`Erro de Criação da Conexão da Pool: ${err}`)
         return false
     }
 }

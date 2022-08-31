@@ -20,7 +20,7 @@ export class Usuario{
             return recordset
         }
         catch(err){
-            console.log("erro no script usuarioModel.js | Select All" + err)
+            console.log('erro no script usuarioModel.js | Select All' + err)
             return false
 
         }
@@ -33,7 +33,7 @@ export class Usuario{
 
         }
         catch(err){
-            console.log("erro no script usuarioModel.js | Insert " + err)
+            console.log('erro no script usuarioModel.js | Insert ' + err)
             return false
         }
     }
@@ -45,18 +45,18 @@ export class Usuario{
 
         }
         catch(err){
-            console.log("erro no script usuarioModel.js | Update " + err)
+            console.log('erro no script usuarioModel.js | Update ' + err)
             return false
         }
     }
 
     async Delete(){
         try {
-            const { rowsAffected } = await Conexao.query(`delete from usuario where id_User = ${this.id_User}`)
+            const { rowsAffected } = await Conexao.query(`delete from usuario where id_User = ${this._id_User}`)
             return rowsAffected
         } 
         catch(err){
-            console.log("error no usuarioModel.js | Delete " + err)
+            console.log('error no usuarioModel.js | Delete ' + err)
             return (err)
         }
     }
